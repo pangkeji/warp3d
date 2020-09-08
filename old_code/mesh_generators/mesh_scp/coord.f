@@ -45,7 +45,7 @@ C	CHARACTER SVAR*1
  
  
 	common /nod/ mr,mf,mv,mh,m1,m2,ma,na,mb,nb,lt,lred,rtype,sfred,
-     1         /max/ ims,jms,kms,is,ima,jma,imb,jmb,kma,
+     1         /maxa/ ims,jms,kms,is,ima,jma,imb,jmb,kma,
      2         /geom/t,w,c,a,kappa,alfa,r1,r2,rn,eta,my,
      3         /nblock/ kstart,kstep,
      4         /reduce/ ksr1,kar1,kar2
@@ -761,8 +761,8 @@ C . . . i >= 5 . . . . . . . . . .
 	   enddo
 	enddo
  
-C.......Låt Yka1=(psi*Y(ka1-2) + (1-psi)*Y(ka1+2) ) för ia1=< i =< ia2
-C......där psi=(yka1 - y(ka1-2)(i=ima) ) / ( y(ka1+2) - y(ka1-2) )
+C.......LÃ¥t Yka1=(psi*Y(ka1-2) + (1-psi)*Y(ka1+2) ) fÃ¶r ia1=< i =< ia2
+C......dÃ¤r psi=(yka1 - y(ka1-2)(i=ima) ) / ( y(ka1+2) - y(ka1-2) )
 	psi= (y((ka1-1)/2)-y((ka1-3)/2)) / (y((ka1+1)/2)-y((ka1-3)/2))
 	do j=1, jma, 2
 	   do i=ia1, ia2, 2
@@ -800,7 +800,7 @@ C . . . Korrigera nodpositioner f|r K=1 & I < IA1.
 	   enddo
 	enddo
 C
-C . . Justera hörnnoder vid elementreducering, dvs da K > 2*(lred-1) !
+C . . Justera hÃ¶rnnoder vid elementreducering, dvs da K > 2*(lred-1) !
 	if (rtype.eq.1) then
 	   do i=5, ima, 4
 	      npos(noda(i,jma-2,ka2),1) =(npos(noda(i,jma-4,ka2),1)+
